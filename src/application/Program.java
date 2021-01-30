@@ -7,6 +7,7 @@ import java.util.Scanner;
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
 import model.dao.SellerDao;
+import model.dao.impl.DepartmentDaoJDBC;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -15,7 +16,7 @@ public class Program {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		findAlldepartment();
+		/* findAlldepartment();
 		
 		System.out.print("Enter id to search: ");
 		int id = sc.nextInt();
@@ -23,10 +24,21 @@ public class Program {
 		System.out.println("--------------------------------------");
 		System.out.println();
 		
-		System.out.println("Entre com o nome do departamento");
+		System.out.print("Entre com o nome do departamento: ");
 		Department department = new Department();
 		department.setName(sc.next());
 		insertDepartment(department);
+		System.out.println("--------------------------------------");
+		System.out.println();
+		*/
+		Department department = new Department();
+		System.out.print("Enter the id for update: ");
+		department.setId(sc.nextInt());
+		System.out.print("Enter name for department update: ");
+		department.setName(sc.next());
+		updateDepartment(department);
+		
+		sc.close();
 	}
 	
 	public static void seller() {
@@ -95,5 +107,11 @@ public class Program {
 	public static void insertDepartment(Department department) {
 		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 		departmentDao.insert(department);
+		System.out.println("Department successfully inserted!");
+	}
+	public static void updateDepartment(Department department) {
+		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+		departmentDao.update(department);
+		System.out.println("Department successfully update!");
 	}
 }
