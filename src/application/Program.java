@@ -13,10 +13,16 @@ import model.entities.Seller;
 public class Program {
 
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		
 		findAlldepartment();
 		
+		System.out.print("Enter id to search: ");
+		int id = sc.nextInt();
+		departmentById(id);
+		
 	}
+	
 	public static void seller() {
 		Scanner sc = new Scanner(System.in);
 		
@@ -73,5 +79,11 @@ public class Program {
 			System.out.println(department);
 		}
 		
+	}
+	public static void departmentById(int id) {
+		
+		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+		Department department = departmentDao.findByid(id);
+		System.out.println(department);
 	}
 }
