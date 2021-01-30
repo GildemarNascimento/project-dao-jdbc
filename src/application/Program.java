@@ -37,6 +37,11 @@ public class Program {
 		System.out.print("Enter name for department update: ");
 		department.setName(sc.next());
 		updateDepartment(department);
+		System.out.println(); 
+		
+		System.out.print("Enter the id for deleted: ");
+		department.setId(sc.nextInt());
+		deleteDepartment(department);
 		
 		sc.close();
 	}
@@ -113,5 +118,10 @@ public class Program {
 		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 		departmentDao.update(department);
 		System.out.println("Department successfully update!");
+	}
+	public static void deleteDepartment(Department department) {
+		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+		departmentDao.deleteById(department);
+		System.out.println("Department successfully deleted");
 	}
 }
