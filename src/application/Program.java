@@ -20,7 +20,13 @@ public class Program {
 		System.out.print("Enter id to search: ");
 		int id = sc.nextInt();
 		departmentById(id);
+		System.out.println("--------------------------------------");
+		System.out.println();
 		
+		System.out.println("Entre com o nome do departamento");
+		Department department = new Department();
+		department.setName(sc.next());
+		insertDepartment(department);
 	}
 	
 	public static void seller() {
@@ -85,5 +91,9 @@ public class Program {
 		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 		Department department = departmentDao.findByid(id);
 		System.out.println(department);
+	}
+	public static void insertDepartment(Department department) {
+		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+		departmentDao.insert(department);
 	}
 }
